@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  appsettings.json: "{\r\n  \"Logging\": {\r\n    \"LogLevel\": {\r\n      \"Default\":
+    \"Information\",\r\n      \"Microsoft\": \"Warning\",\r\n      \"Microsoft.Hosting.Lifetime\":
+    \"Information\"\r\n    }\r\n  },\r\n  \"AllowedHosts\": \"*\",\r\n  \"Message\":
+    \ {\r\n      \"Text\": \"Hello Oam\"\r\n  },\r\n  \"DB\": {\r\n    \"DB_URL\":
+    \"127.0.0.1:3306\"\r\n  }\r\n}\r\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: appsettings

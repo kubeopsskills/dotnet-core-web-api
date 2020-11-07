@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dotnet-core-web-api
+  name: dotnet-core-web-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-core-web-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dotnet-core-web-api
+    spec:
+      containers:
+      - image: sikiryl/dotnet-core-web-api
+        name: dotnet-core-web-api
+        resources: {}
+        env: 
+        - name: ASPNETCORE_URLS
+          value: "http://*:8090"
+        ports:
+        - containerPort: 8090
+        volumeMounts:
+        - name: appvolume
+          mountPath: "/app/appsettings.json"
+          subPath: "appsettings.json"
+      volumes:
+        - name: appvolume
+          configMap:
+            name: appsettings
+status: {}
