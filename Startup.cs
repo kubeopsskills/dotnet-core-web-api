@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Models;
 
 namespace dotnet_core_web_api
 {
@@ -25,7 +26,9 @@ namespace dotnet_core_web_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(); 
+            services.Configure<Message>(Configuration.GetSection(nameof(Message)));
+            services.Configure<DB>(Configuration.GetSection(nameof(DB)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,14 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
-// public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-//     WebHost.CreateDefaultBuilder(args)
-//         .ConfigureAppConfiguration(c =>
-//         {
-//            c.AddJsonFile("config/appsettings.json", optional: true, reloadOnChange: true);
-//         })
-//         .UseStartup<Startup>();
+using Models;
+using Microsoft.Extensions.Options;
 
 namespace dotnet_core_web_api.Controllers
 {
@@ -19,17 +13,20 @@ namespace dotnet_core_web_api.Controllers
     [Route("/")]
     public class KubeOpsController : ControllerBase
     {
-        private readonly ILogger<KubeOpsController> _logger;
+        private Message _options;
+        private DB _dbOption;
 
-        public KubeOpsController(ILogger<KubeOpsController> logger)
+        public KubeOpsController(IOptions<Message> options, IOptions<DB> dbOptions)
         {
-            _logger = logger;
+            _options = options.Value;
+            _dbOption = dbOptions.Value;
         }
 
         [HttpGet]
         public String Get()
         {
-            return "Hello KubeOps Skills Dotnet Core !!";
+            return _options.Text + " : "+ _dbOption.DB_URL;
         }
     }
+
 }
