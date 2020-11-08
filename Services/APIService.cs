@@ -4,7 +4,7 @@ using Models;
 namespace Services {
     public class APIService {
 
-        public DatabaseConfig _dbOptions;
+        private readonly DatabaseConfig _dbOptions;
         
         public APIService(IOptions<DatabaseConfig> dbOptions)
         {
