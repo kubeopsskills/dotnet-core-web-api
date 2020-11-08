@@ -9,6 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+.vscode
+bin/Debug
+bin/Release
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -330,7 +333,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-.vscode
 
 # OpenCover UI analysis results
 OpenCover/
