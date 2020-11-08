@@ -5,6 +5,7 @@ metadata:
   labels:
     app: dotnet-core-web-api
   name: dotnet-core-web-api
+  namespace: demo-prod
 spec:
   replicas: 1
   selector:
@@ -18,18 +19,20 @@ spec:
         app: dotnet-core-web-api
     spec:
       containers:
-      - image: sikiryl/dotnet-core-web-api
+      - image: ghcr.io/kubeopsskills/dotnet-core-web-api:1.0.0
         name: dotnet-core-web-api
         resources: {}
         env: 
         - name: ASPNETCORE_URLS
           value: "http://*:8090"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
         ports:
         - containerPort: 8090
         volumeMounts:
         - name: appvolume
-          mountPath: "/app/appsettings.json"
-          subPath: "appsettings.json"
+          mountPath: "/app/appsettings.Production.json"
+          subPath: "appsettings.Production.json"
       volumes:
         - name: appvolume
           configMap:

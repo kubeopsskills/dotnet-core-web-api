@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Models;
+using Services;
 
 namespace dotnet_core_web_api
 {
@@ -27,8 +21,8 @@ namespace dotnet_core_web_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(); 
-            services.Configure<Message>(Configuration.GetSection(nameof(Message)));
-            services.Configure<DB>(Configuration.GetSection(nameof(DB)));
+            services.Configure<DatabaseConfig>(Configuration.GetSection(nameof(DatabaseConfig)));
+            services.AddSingleton<APIService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

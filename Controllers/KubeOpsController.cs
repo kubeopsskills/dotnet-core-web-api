@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Models;
-using Microsoft.Extensions.Options;
+using Services;
 
 namespace dotnet_core_web_api.Controllers
 {
@@ -13,19 +8,17 @@ namespace dotnet_core_web_api.Controllers
     [Route("/")]
     public class KubeOpsController : ControllerBase
     {
-        private Message _options;
-        private DB _dbOption;
+        private readonly APIService _apiService;
 
-        public KubeOpsController(IOptions<Message> options, IOptions<DB> dbOptions)
+        public KubeOpsController(APIService apiService)
         {
-            _options = options.Value;
-            _dbOption = dbOptions.Value;
+           _apiService = apiService;
         }
 
         [HttpGet]
         public String Get()
         {
-            return _options.Text + " : "+ _dbOption.DB_URL;
+            return _apiService.ConnectionToDatabase();
         }
     }
 
