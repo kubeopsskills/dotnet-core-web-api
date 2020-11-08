@@ -33,6 +33,7 @@ spec:
         - name: appvolume
           mountPath: "/app/appsettings.Production.json"
           subPath: "appsettings.Production.json"
+        imagePullPolicy: Always
       volumes:
         - name: appvolume
           configMap:
