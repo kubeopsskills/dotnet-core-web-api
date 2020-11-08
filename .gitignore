@@ -12,6 +12,7 @@
 .vscode
 bin/Debug
 bin/Release
+out
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
