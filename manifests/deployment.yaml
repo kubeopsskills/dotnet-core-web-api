@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dotnet-core-web-api
+  name: dotnet-core-web-api
+  namespace: demo-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-core-web-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dotnet-core-web-api
+    spec:
+      containers:
+      - image: ghcr.io/kubeopsskills/dotnet-core-web-api:1.0.0
+        name: dotnet-core-web-api
+        resources: {}
+        env: 
+        - name: ASPNETCORE_URLS
+          value: "http://*:8090"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        ports:
+        - containerPort: 8090
+        volumeMounts:
+        - name: appvolume
+          mountPath: "/app/appsettings.Production.json"
+          subPath: "appsettings.Production.json"
+      volumes:
+        - name: appvolume
+          configMap:
+            name: appsettings
+status: {}
