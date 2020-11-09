@@ -21,6 +21,7 @@ namespace dotnet_core_web_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(); 
+            services.AddHealthChecks();
             services.Configure<DatabaseConfig>(Configuration.GetSection(nameof(DatabaseConfig)));
             services.AddSingleton<APIService>();
         }
@@ -42,6 +43,7 @@ namespace dotnet_core_web_api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }

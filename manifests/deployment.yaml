@@ -27,6 +27,20 @@ spec:
           value: "http://*:8090"
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8090
+            scheme: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8090
+            scheme: http    
+          initialDelaySeconds: 10
+          periodSeconds: 10      
         ports:
         - containerPort: 8090
         volumeMounts:
