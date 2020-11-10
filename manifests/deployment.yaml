@@ -31,14 +31,14 @@ spec:
           httpGet:
             path: /health
             port: 8090
-            scheme: http
+            scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /health
             port: 8090
-            scheme: http    
+            scheme: HTTP    
           initialDelaySeconds: 10
           periodSeconds: 10      
         ports:
