@@ -7,6 +7,7 @@
 *.rsuser
 *.suo
 *.user
+*.sln
 *.userosscache
 *.sln.docstates
 .vscode
