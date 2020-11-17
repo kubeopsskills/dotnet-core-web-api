@@ -36,7 +36,7 @@ This is a boilerplate template for building / deploying a .NET Core Web API micr
 ```
 
 - `Dockerfile` is .NET Core Web API Multistage Dockerfile (following Docker Best Practices)
-- `KubernetesLocalProcessConfig.yaml` is Bridge to Kubernetes config to supports developing .NET Core Web API microservice on Kubernetes
+- `KubernetesLocalProcessConfig.yaml` is [Bridge to Kubernetes](https://devblogs.microsoft.com/visualstudio/bridge-to-kubernetes-ga/) config to supports developing .NET Core Web API microservice on Kubernetes
 - `configs` folder will contain .NET Core Web API centralized config structure
 - `appsettings.Development.json` is .NET Core Web API development environment config
 - `manifests` folder will contain Kubernetes manifests (deployment, service)
@@ -59,6 +59,10 @@ $ dotnet restore
 ```
 
 ## Deploying a .NET Core Web API microservice
+
+### Prerequisite:
+
+- .NET Core Web API Docker Image
 
 Preparing Config Map for .NET Core Web API microservice
 
