@@ -5,6 +5,8 @@ stages:
   - deploy
 
 kubeops-build:
+  variables:
+    DOCKER_HOST: tcp://localhost:2375
   image:
     name: docker:19.03.13-git
   stage: build
