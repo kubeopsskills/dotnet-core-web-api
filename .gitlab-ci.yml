@@ -11,9 +11,8 @@ kubeops-build:
     name: docker:19.03.13-git
   stage: build
   script:
-    - echo "$DOCKER_PASSWORD"
     - docker build -t kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA .
-    - echo "$DOCKER_PASSWORD" | docker login -u kubeopstester --password-stdin
+    - echo $DOCKER_PASSWORD | docker login -u kubeopstester --password-stdin
     - docker push kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
   only:
     - develop
