@@ -1,3 +1,6 @@
+services:
+  - docker:19.03.1-dind
+
 ## Should contain at least these three stages for a basic CI/CD
 stages:
   - build
@@ -7,7 +10,7 @@ kubeops-build:
   variables:
     DOCKER_HOST: tcp://localhost:2375
   image:
-    name: docker:19.03.13-dind
+    name: docker:19.03.13-git
   stage: build
   script:
     - docker build -t kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA .
