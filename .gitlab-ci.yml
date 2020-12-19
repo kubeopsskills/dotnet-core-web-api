@@ -1,12 +1,10 @@
-services:
-  - docker:19.03.1-dind
-
-## Should contain at least these three stages for a basic CI/CD
 stages:
   - build
   - deploy
 
 kubeops-build:
+  services:
+    - docker:19.03.1-dind
   image:
     name: docker:19.03.13-git
   stage: build
@@ -17,11 +15,23 @@ kubeops-build:
   only:
     - develop
 
-# kubeops-deploy:
-#   image:
-#     name: docker:19.03.13-git
-#   stage: deploy
-#   script:
-#     - registry_login
-#   only:
-#     - master
+kubeops-deploy:
+  image:
+    name: alpine:3.8
+  stage: deploy bash
+  script:
+    - apk add --no-cache git wget
+    - git remote set-url origin https://${GITLAB_USERNAME}:${GITLAB_TOKEN}@gitlab.com/kubeops-skills/dotnet-configuration.git
+    - git config --global user.email "gitlab@gitlab.com"
+    - git config --global user.name "GitLab CI/CD"
+    - git checkout -B develop
+    - git pull origin develop
+    - cd dotnet-core-web-api
+    - wget -O yq https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64
+    - ./yq w -i dotnet-core-web-api/deployment.yaml "spec.template.spec.containers[0].image" kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
+    - git commit -am 'develop image update'
+    - git push origin develop
+  only:
+    - develop
+  needs:
+    - job: kubeops-build
