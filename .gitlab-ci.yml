@@ -1,0 +1,27 @@
+services:
+  - docker:19.03.1-dind
+
+## Should contain at least these three stages for a basic CI/CD
+stages:
+  - build
+  - deploy
+
+kubeops-build:
+  image:
+    name: docker:19.03.13-git
+  stage: build
+  script:
+    - docker build -t kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA .
+    - echo $DOCKER_PASSWORD | docker login -u kubeopstester --password-stdin
+    - docker push kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
+  only:
+    - develop
+
+# kubeops-deploy:
+#   image:
+#     name: docker:19.03.13-git
+#   stage: deploy
+#   script:
+#     - registry_login
+#   only:
+#     - master
