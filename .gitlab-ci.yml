@@ -27,7 +27,7 @@ kubeops-deploy:
     - cd dotnet-core-web-api
     - wget -O yq https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64
     - chmod ug+x ./yq
-    - ./yq w -i dotnet-core-web-api/deployment.yaml "spec.template.spec.containers[0].image" kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
+    - ./yq w -i deployment.yaml "spec.template.spec.containers[0].image" kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
     - git commit -am 'develop image update'
     - git push origin develop
   only:
