@@ -28,6 +28,8 @@ kubeops-deploy:
     - wget -O yq https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64
     - chmod ug+x ./yq
     - ./yq w -i deployment.yaml "spec.template.spec.containers[0].image" kubeopstester/dotnet-core-web-api:$CI_COMMIT_SHA
+    - git config --global user.email "gitlab@gitlab.com"
+    - git config --global user.name "GitLab CI/CD"
     - git commit -am 'develop image update'
     - git push origin develop
   only:
