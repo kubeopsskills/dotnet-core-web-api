@@ -12,7 +12,7 @@ namespace Services {
         }
 
         public string ConnectionToDatabase(){
-            return "Connected to DB with DB_URL: "+_dbOptions.DBURL+", DB_USERNAME: "+_dbOptions.DBUserName+", DB_PASSWORD: "+_dbOptions.DBPassword;
+            return "Hello World with DB_URL: "+_dbOptions.DBURL+", DB_USERNAME: "+_dbOptions.DBUserName+", DB_PASSWORD: "+_dbOptions.DBPassword;
         }
     }
 }
