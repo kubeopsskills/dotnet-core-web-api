@@ -1,4 +1,4 @@
-namespace Models {
+namespace DotNetCoreWebAPI.Models {
 
      public class DatabaseConfig { 
           public string DBURL { get; set; }

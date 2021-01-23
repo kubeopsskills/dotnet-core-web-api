@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Models;
-using Services;
+using DotNetCoreWebAPI.Models;
+using DotNetCoreWebAPI.Services;
 
-namespace dotnet_core_web_api
+namespace DotNetCoreWebAPI
 {
     public class Startup
     {

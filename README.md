@@ -5,7 +5,7 @@ This is a boilerplate template for building / deploying a .NET Core Web API micr
 ## Versioning
 | GitHub Release | .NET Core Version | Diagnostics HealthChecks Version |
 |----------------|------------ |---------------------|
-| main | 3.1 | 2.2.0 |
+| main | 5.0 | 2.2.0 |
 
 ## Project Structure
 ```

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
-using Models;
+using DotNetCoreWebAPI.Models;
 
-namespace Services {
+namespace DotNetCoreWebAPI.Services {
     public class APIService {
 
         private readonly DatabaseConfig _dbOptions;

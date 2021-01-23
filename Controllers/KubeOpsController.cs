@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Services;
+using DotNetCoreWebAPI.Services;
 
-namespace dotnet_core_web_api.Controllers
+namespace DotNetCoreWebAPI.Controllers
 {
     [ApiController]
     [Route("/")]
