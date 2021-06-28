@@ -1,5 +1,5 @@
 deploy:
-  - okteto build -t okteto.dev/dotnet-core-web-api:${OKTETO_GIT_COMMIT} dotnet-core-web-api
+  - okteto build -t okteto.dev/dotnet-core-web-api:${OKTETO_GIT_COMMIT} .
   - kubectl apply -k configs/prod
   - kubectl apply -f manifests
 devs:
