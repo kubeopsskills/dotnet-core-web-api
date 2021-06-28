@@ -1,0 +1,8 @@
+name: dotnet-core-web-api
+command: ["bash"]
+forward:
+  - 8090:8090
+sync:
+  - .:/src
+persistentVolume:
+  enabled: false
