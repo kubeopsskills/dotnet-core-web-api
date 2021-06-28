@@ -1,6 +1,0 @@
-deploy:
-  - okteto build -t okteto.dev/dotnet-core-web-api:1.0.0 .
-  - kubectl apply -k configs/prod
-  - kubectl apply -f manifests
-devs:
-  - okteto.yml
