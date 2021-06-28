@@ -2,8 +2,8 @@ name: dotnet-core-web-api
 image: okteto.dev/dotnet-core-web-api:dev
 command: ["bash"]
 forward:
-  - 8090:8090
+  - 5000:5000
 sync:
-  - .:/src
+  - .:/app
 persistentVolume:
   enabled: false
