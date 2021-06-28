@@ -1,4 +1,5 @@
 name: dotnet-core-web-api
+image: okteto.dev/dotnet-core-web-api:dev
 command: ["bash"]
 forward:
   - 8090:8090
