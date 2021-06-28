@@ -1,4 +1,4 @@
-[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/kubeopsskills/dotnet-core-web-api&branch=main)
+[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/kubeopsskills/dotnet-core-web-api&branch=develop)
 
 # .NET Core Web API Starter Project
 
