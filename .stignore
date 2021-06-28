@@ -1,0 +1,6 @@
+.git
+out
+bin
+obj/Debug
+obj/Release
+core.*.*.*
