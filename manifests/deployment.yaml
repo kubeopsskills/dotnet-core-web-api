@@ -17,7 +17,7 @@ spec:
         app: dotnet-core-web-api
     spec:
       containers:
-      - image: ghcr.io/kubeopsskills/dotnet-core-web-api:1.0.0
+      - image: okteto.dev/dotnet-core-web-api:1.0.0
         name: dotnet-core-web-api
         resources: {}
         env: 
