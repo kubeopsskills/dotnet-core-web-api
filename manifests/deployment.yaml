@@ -4,7 +4,7 @@ metadata:
   labels:
     app: dotnet-core-web-api
   name: dotnet-core-web-api
-  namespace: demo-prod
+  namespace: dmakeroam
 spec:
   replicas: 1
   selector:
