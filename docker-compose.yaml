@@ -4,7 +4,7 @@ services:
   dotnet-core-web-api:
     build: .
     ports:
-      - 8090:8090
+      - 5000:5000
     environment:
-      ASPNETCORE_URLS: "http://*:8090"
-      ASPNETCORE_ENVIRONMENT: "Production"
+      ASPNETCORE_URLS: "http://*:5000"
+      ASPNETCORE_ENVIRONMENT: "Development"
