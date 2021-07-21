@@ -1,25 +1,15 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using DotNetCoreWebAPI.Services;
+﻿using DotNetCoreWebAPI.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCoreWebAPI.Controllers
 {
-    [ApiController]
-    [Route("/")]
-    public class KubeOpsController : ControllerBase
+    public class KubeOpsController
     {
-        private readonly APIService _apiService;
-
-        public KubeOpsController(APIService apiService)
-        {
-           _apiService = apiService;
-        }
-
-        [HttpGet]
-        public String Get()
-        {
-            return _apiService.ConnectionToDatabase();
-        }
+       async public static void Get(HttpContext http){
+          var apiService = http.RequestServices.GetRequiredService<APIService>();
+          await http.Response.WriteAsync(apiService.ConnectionToDatabase());
+       }
     }
 
 }
