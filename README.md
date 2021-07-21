@@ -2,7 +2,8 @@
 
 # .NET Core Web API Starter Project
 
-This is a boilerplate template for building / deploying a .NET Core Web API microservice on Kubernetes
+This is a boilerplate template for building / deploying a .NET Core Web API microservice on Kubernetes.
+This leverages .NET 6, new hosting model, and new routing API to enhance .NET performance. You can learn .NET 6 more on [ASP.NET Core minimal APIs](https://www.dotnetthailand.com/web-frameworks/asp-net-core/asp-net-core-minimal-apis).
 
 ## Versioning
 | GitHub Release | .NET Core Version | Diagnostics HealthChecks Version |
@@ -79,3 +80,9 @@ $ kubectl apply -f manifests
 ```
 
 This will deploy it on Kubernetes with the centralized config.
+
+## Learning Resources:
+
+- [.NET Thailand](https://www.dotnetthailand.com/)
+- [Announcing .NET 6 Preview 4](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-4/)
+- [Breaking changes in .NET 6](https://docs.microsoft.com/en-us/dotnet/core/compatibility/6.0)
