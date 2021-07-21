@@ -1,9 +1,9 @@
 namespace DotNetCoreWebAPI.Models {
 
-     public class DatabaseConfig { 
-          public string DBURL { get; set; }
-          public string DBUserName { get; set; }
-          public string DBPassword { get; set; }
+     public record DatabaseConfig { 
+          public string DBURL { get; init; }
+          public string DBUserName { get; init; }
+          public string DBPassword { get; init; }
      }
 
 }

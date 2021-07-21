@@ -1,31 +1,44 @@
-using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DotNetCoreWebAPI.Models;
+using DotNetCoreWebAPI.Services;
+using System;
 
-namespace DotNetCoreWebAPI
+var builder = WebApplication.CreateBuilder();
+
+builder.Services.AddControllers();
+builder.Services.AddHealthChecks();
+    
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var configurationBuilder = new ConfigurationBuilder()
+.AddJsonFile($"appsettings.{environment}.json", true, true)
+.AddEnvironmentVariables()
+.Build();
+
+builder.Services.Configure<DatabaseConfig>(configurationBuilder.GetSection(nameof(DatabaseConfig)));
+builder.Services.AddSingleton<APIService>();
+
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-         public static IWebHostBuilder CreateHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config.Sources.Clear();
-                var env = hostingContext.HostingEnvironment;
-                config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", 
-                                     optional: true, reloadOnChange: true);
-                config.AddEnvironmentVariables();
-                if (args != null)
-                {
-                    config.AddCommandLine(args);
-                }
-            })
-            .UseStartup<Startup>();
-    }
+    app.UseDeveloperExceptionPage();
 }
+
+app.UseHttpsRedirection();
+app.UseHttpLogging();
+app.UseRouting();
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHealthChecks("/health");
+});
+
+app.MapGet("/test", (Func<string>)(() => {
+    return "Hello World";
+}));
+
+app.Run();
