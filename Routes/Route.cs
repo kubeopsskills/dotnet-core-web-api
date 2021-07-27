@@ -6,7 +6,7 @@ namespace DotNetCoreWebAPI.Routes
     {
         public static void Setup(WebApplication app)
         {
-            app.MapGet("/", KubeOpsController.Get);
+            app.MapGet("/", KubeOpsController.GetAsync);
         }
     }
 
