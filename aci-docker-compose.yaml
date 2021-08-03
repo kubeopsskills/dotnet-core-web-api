@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  dotnet-core-web-api:
+    image: ghcr.io/kubeopsskills/dotnet-core-web-api:1.0.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+      resources:
+        reservations:
+          cpus: '1'
+          memory: 1G
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8090/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    ports:
+      - 8090:8090
+    environment:
+      ASPNETCORE_URLS: "http://*:8090"
+      ASPNETCORE_ENVIRONMENT: "Development"
