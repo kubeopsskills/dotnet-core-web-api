@@ -2,7 +2,7 @@
 
 # .NET Core Web API Starter Project
 
-This is a boilerplate template for building / deploying a .NET Core Web API microservice on Kubernetes.
+This is a boilerplate template for building / deploying a .NET Core Web API microservice on Kubernetes / Azure Container Instance.
 This leverages .NET 6, new hosting model, and new routing API to enhance .NET performance. You can learn .NET 6 more on [ASP.NET Core minimal APIs](https://www.dotnetthailand.com/web-frameworks/asp-net-core/asp-net-core-minimal-apis).
 
 ## Versioning
@@ -61,7 +61,7 @@ followed by
 $ dotnet restore
 ```
 
-## Deploying a .NET Core Web API microservice
+## Deploying a .NET Core Web API microservice on Kubernetes
 
 ### Prerequisite:
 
@@ -80,6 +80,19 @@ $ kubectl apply -f manifests
 ```
 
 This will deploy it on Kubernetes with the centralized config.
+
+## Deploying a .NET Core Web API microservice on Azure Container Instance (ACI)
+
+### Prerequisite:
+
+- [ACI Context](https://docs.docker.com/cloud/aci-integration/#run-docker-containers-on-aci)
+
+
+To deploy the microservice on ACI, run following command:
+
+```sh
+$ docker compose -f aci-docker-compose.yaml up -d
+```
 
 ## Learning Resources:
 
