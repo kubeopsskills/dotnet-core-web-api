@@ -94,6 +94,33 @@ To deploy the microservice on ACI, run following command:
 $ docker compose -f aci-docker-compose.yaml up -d
 ```
 
+## Deploying a .NET Core Web API microservice on [AWS App Runner](https://aws.amazon.com/apprunner/) using AWS Copilot
+
+### Prerequisite:
+
+- [AWS Copilot](https://aws.github.io/copilot-cli/docs/getting-started/install/)
+
+To deploy the microservice on AWS, following these steps:
+
+- Prepare AWS IAM roles and AWS ECR repository for the microservice
+
+```sh
+$ copilot init --app kubeops-demo
+```
+
+- Create the test environment on AWS
+
+```sh
+$ copilot env init --name test --app kubeops-demo
+```
+
+- Deploy the microservice on the test environment
+
+```sh
+$ copilot svc deploy --env test
+```
+
+
 ## Learning Resources:
 
 - [.NET Thailand](https://www.dotnetthailand.com/)
