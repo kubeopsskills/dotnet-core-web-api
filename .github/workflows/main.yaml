@@ -1,0 +1,41 @@
+name: Deploy a .NET 6 app to Azure Kubernetes Service (AKS)
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  docker:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Login to Azure Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: demostyava.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: dotnet-core-web-api:1.0.0:${{ github.sha }}
+
+      - name: Set AKS Context
+        uses: azure/aks-set-context@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          cluster-name: ${{ env.CLUSTER_NAME }}
+          resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+
+                      
+      - name: Apply Kubernetes Manifests
+        uses: azure/k8s-deploy@v1
+        with:
+          manifests: |
+            manifests/config.yml
+            manifests/deployment.yml
+            manifests/service.yml
+          images: |
+            demostyava.azurecr.io/dotnet-core-web-api:${{ github.sha }}
