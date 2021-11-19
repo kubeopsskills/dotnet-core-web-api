@@ -3,7 +3,7 @@ name: Deploy a .NET 6 app to Azure Kubernetes Service (AKS)
 on:
   push:
     branches:
-      - 'develop'
+      - 'main'
 
 jobs:
   deploy:
