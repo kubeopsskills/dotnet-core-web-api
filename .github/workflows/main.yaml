@@ -3,7 +3,7 @@ name: Deploy a .NET 6 app to Azure Kubernetes Service (AKS)
 on:
   push:
     branches:
-      - 'main'
+      - 'develop'
 
 jobs:
   deploy:
@@ -35,8 +35,8 @@ jobs:
         uses: azure/k8s-deploy@v1
         with:
           manifests: |
-            manifests/config.yaml
-            manifests/deployment.yaml
-            manifests/service.yaml
+            ./manifests/config.yaml
+            ./manifests/deployment.yaml
+            ./manifests/service.yaml
           images: |
             demostyava.azurecr.io/dotnet-core-web-api:${{ github.sha }}
