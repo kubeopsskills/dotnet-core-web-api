@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-20.04
     environment: production
     steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+
       - name: Login to Azure Container Registry
         uses: docker/login-action@v1 
         with:
