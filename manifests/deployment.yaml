@@ -4,7 +4,7 @@ metadata:
   labels:
     app: dotnet-core-web-api
   name: dotnet-core-web-api
-  namespace: dmakeroam
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -17,7 +17,7 @@ spec:
         app: dotnet-core-web-api
     spec:
       containers:
-      - image: ghcr.io/kubeopsskills/dotnet-core-web-api:1.0.0
+      - image: demostyava.azurecr.io/dotnet-core-web-api:1.0.0
         name: dotnet-core-web-api
         resources: {}
         env: 

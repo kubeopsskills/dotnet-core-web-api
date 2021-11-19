@@ -4,7 +4,7 @@ metadata:
   labels:
     app: dotnet-core-web-api
   name: dotnet-core-web-api
-  namespace: dmakeroam
+  namespace: default
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
