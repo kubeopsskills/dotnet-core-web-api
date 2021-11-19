@@ -21,7 +21,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: dotnet-core-web-api:1.0.0:${{ github.sha }}
+          tags: dotnet-core-web-api:${{ github.sha }}
 
       - name: Set AKS Context
         uses: azure/aks-set-context@v1
