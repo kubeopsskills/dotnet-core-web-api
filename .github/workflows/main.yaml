@@ -6,8 +6,9 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  deploy:
     runs-on: ubuntu-20.04
+    environment: production
     steps:
       - name: Login to Azure Container Registry
         uses: docker/login-action@v1 
